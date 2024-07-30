@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Registration Portal
+{% endblock %}
+
+{% block content %}
+<h1>This is the Registration Portal</h1>
+
+<div class = "form-container">
+    <form id="myForm" action="#" method = "POST"> 
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" id="name" placeholder="Ex. Sailendra Gautam" name="name"><br><br>
+        <label>Gender:</label>
+        <input type="text" id="gender" placeholder="MALE" name="gender"><br><br>
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users  %}
+            <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.gender}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
